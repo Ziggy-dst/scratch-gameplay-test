@@ -24,12 +24,12 @@ MonoBehaviour:
   - id: 2
     name: "\u767E\u9999\u679C"
     image: {fileID: 21300000, guid: 18b028c682fd2b245bc5c7ae47c4783a, type: 3}
-    prize: 5
+    prize: 3
   - id: 3
     name: "\u7315\u7334\u6843"
     image: {fileID: 21300000, guid: 37924828e4898c24fa75774c526648e4, type: 3}
-    prize: 10
+    prize: 4
   - id: 4
     name: "\u897F\u74DC"
     image: {fileID: 21300000, guid: fe8c9f1cdd8e5f743a9a29bf269cec68, type: 3}
-    prize: 20
+    prize: 5
