@@ -14,5 +14,6 @@ public class IconItemSO : ScriptableObject
         public string name;
         public Sprite image;
         public int prize;
+        public float probability;
     }
 }

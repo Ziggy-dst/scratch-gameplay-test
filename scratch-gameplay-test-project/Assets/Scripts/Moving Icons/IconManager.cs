@@ -74,7 +74,8 @@ public class IconManager : MonoBehaviour
                 gridPositions[i, j] = iconObject.transform.position;
 
                 // randomize icon item
-                var randIconItem = IconItemSo.iconPool[Random.Range(0, IconItemSo.iconPool.Count)];
+                // var randIconItem = IconItemSo.iconPool[Random.Range(0, IconItemSo.iconPool.Count)];
+                var randIconItem = IconItemSo.iconPool[int.Parse(Utils.CalculateMultiProbability(IconItemSo.iconPool))];
                 iconItems[i, j] = randIconItem;
 
                 // set sprite
