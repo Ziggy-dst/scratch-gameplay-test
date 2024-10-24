@@ -26,6 +26,6 @@ public class GridCover : MonoBehaviour
     private void RevealGrid()
     {
         _spriteRenderer.enabled = false;
-        IconManager.OnCoverRevealed(grid);
+        IconManager.OnCoverRevealed?.Invoke(grid);
     }
 }

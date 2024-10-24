@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1758ef4723a274128872af5b6d912004, type: 3}
+  m_Name: IconItemSO
+  m_EditorClassIdentifier: 
+  iconPool:
+  - id: 0
+    name: "\u725B\u6CB9\u679C"
+    image: {fileID: 21300000, guid: 46485bd47dba7c347bc05ecdd0d1d75a, type: 3}
+    prize: 10
+  - id: 1
+    name: "\u67FF\u5B50"
+    image: {fileID: 21300000, guid: 5786ac2277493174886c0a20a3a8bc4a, type: 3}
+    prize: 20
+  - id: 2
+    name: "\u706B\u9F99\u679C"
+    image: {fileID: 21300000, guid: 18b028c682fd2b245bc5c7ae47c4783a, type: 3}
+    prize: 50
+  - id: 3
+    name: "\u7315\u7334\u6843"
+    image: {fileID: 21300000, guid: 37924828e4898c24fa75774c526648e4, type: 3}
+    prize: 100

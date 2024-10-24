@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,27 +11,32 @@ using Random = UnityEngine.Random;
 public class IconManager : MonoBehaviour
 {
     public static Action<Vector2Int> OnCoverRevealed;
+    public static Action<int> OnScoreGained;
     public static bool isIconMoving = false;
+
+    public IconItemSO IconItemSo;
 
     public int rows = 5;
     public int columns = 5;
     public Vector2 generateStartPoint = Vector2.zero;
-    public Sprite[] sprites;
 
     public GameObject coverPrefab;
     public GameObject clusterBGPrefab;
 
-    // index: grid, content: spriteRenderer
-    private SpriteRenderer[,] spriteRenderers;
+    private Transform[,] iconObjects;
+    // index: grid, content: iconItems
+    private IconItemSO.IconItem[,] iconItems;
     // grid, position
     private Vector2[,] gridPositions;
+
     // grid of revealed icon grids
     private List<Vector2Int> revealedGrids = new List<Vector2Int>();
-
     private List<Vector2Int> movingGrids = new List<Vector2Int>();
 
     private bool[,] visitedGrids;
-    private List<Vector2Int> cluster;
+    private List<Vector2Int> cluster = new List<Vector2Int>();
+
+    private List<Vector2Int> scoredGrid = new List<Vector2Int>();
 
     private int revealedCoverCount = 0;
 
@@ -51,27 +55,35 @@ public class IconManager : MonoBehaviour
 
     private void GenerateGrids()
     {
-        spriteRenderers = new SpriteRenderer[rows, columns];
+        iconObjects = new Transform[rows, columns];
+        iconItems = new IconItemSO.IconItem[rows, columns];
         gridPositions = new Vector2[rows, columns];
 
-        GameObject spriteParentObject = new GameObject("Icons");
+        GameObject iconParentObject = new GameObject("Icons");
 
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                GameObject spriteObject = new GameObject("Icon_" + i + "_" + j);
-                spriteObject.transform.parent = spriteParentObject.transform;
-                spriteObject.transform.position = new Vector2(generateStartPoint.x + j, generateStartPoint.y - i);
-                SpriteRenderer sr = spriteObject.AddComponent<SpriteRenderer>();
-                sr.sprite = sprites[Random.Range(0, sprites.Length)];
+                GameObject iconObject = new GameObject("Icon_" + i + "_" + j);
+
+                // set position
+                iconObject.transform.parent = iconParentObject.transform;
+                iconObject.transform.position = new Vector2(generateStartPoint.x + j, generateStartPoint.y - i);
+                iconObjects[i, j] = iconObject.transform;
+                gridPositions[i, j] = iconObject.transform.position;
+
+                // randomize icon item
+                var randIconItem = IconItemSo.iconPool[Random.Range(0, IconItemSo.iconPool.Count)];
+                iconItems[i, j] = randIconItem;
+
+                // set sprite
+                SpriteRenderer sr = iconObject.AddComponent<SpriteRenderer>();
+                sr.sprite = randIconItem.image;
 
                 // add cover
-                GameObject cover = Instantiate(coverPrefab, spriteObject.transform);
+                GameObject cover = Instantiate(coverPrefab, iconObject.transform);
                 cover.GetComponent<GridCover>().grid = new Vector2Int(i, j);
-
-                gridPositions[i, j] = sr.transform.position;
-                spriteRenderers[i, j] = sr;
 
                 // AddRevealedIconGrid(new Vector2Int(i, j));
             }
@@ -84,7 +96,8 @@ public class IconManager : MonoBehaviour
 
         if (movingGridsCount < 2) return;
 
-        SpriteRenderer lastRevealedIconGrid = spriteRenderers[movingGrids[movingGridsCount-1].x, movingGrids[movingGridsCount-1].y];
+        var lastRevealedIconGrid = iconObjects[movingGrids[movingGridsCount-1].x, movingGrids[movingGridsCount-1].y];
+        var lastRevealedIconItem = iconItems[movingGrids[movingGridsCount-1].x, movingGrids[movingGridsCount-1].y];
 
         for (int i = movingGridsCount - 1; i > 0; i--)
         {
@@ -92,21 +105,25 @@ public class IconManager : MonoBehaviour
             Vector2 destination = gridPositions[movingGrids[i].x, movingGrids[i].y];
 
             // move the sprite
-            spriteRenderers[movingGrids[i - 1].x, movingGrids[i - 1].y].transform.DOMove(destination, .5f)
+            iconObjects[movingGrids[i - 1].x, movingGrids[i - 1].y].DOMove(destination, .5f)
                 .SetEase(Ease.Linear)
                 .OnStart(() => isIconMoving = true)
                 .OnComplete(() => isIconMoving = false);
 
             // update the sprite renderer grids list
-            spriteRenderers[movingGrids[i].x, movingGrids[i].y] =
-                spriteRenderers[movingGrids[i - 1].x, movingGrids[i - 1].y];
+            iconObjects[movingGrids[i].x, movingGrids[i].y] =
+                iconObjects[movingGrids[i - 1].x, movingGrids[i - 1].y];
+
+            iconItems[movingGrids[i].x, movingGrids[i].y] =
+                iconItems[movingGrids[i - 1].x, movingGrids[i - 1].y];
         }
 
-        lastRevealedIconGrid.transform.DOMove(gridPositions[movingGrids[0].x, movingGrids[0].y], .5f)
+        lastRevealedIconGrid.DOMove(gridPositions[movingGrids[0].x, movingGrids[0].y], .5f)
             .SetEase(Ease.Linear)
             .OnStart(() => isIconMoving = true)
             .OnComplete(() => isIconMoving = false);;
-        spriteRenderers[movingGrids[0].x, movingGrids[0].y] = lastRevealedIconGrid;
+        iconObjects[movingGrids[0].x, movingGrids[0].y] = lastRevealedIconGrid;
+        iconItems[movingGrids[0].x, movingGrids[0].y] = lastRevealedIconItem;
 
         CheckClusters();
     }
@@ -164,6 +181,16 @@ public class IconManager : MonoBehaviour
 #endregion
 
 #region Result Check
+
+    private void CalculateScore(int iconPrize)
+    {
+        // TODO: score algorithm
+        int score = iconPrize;
+
+        OnScoreGained?.Invoke(score);
+    }
+
+
     private void CheckClusters()
     {
         visitedGrids = new bool[rows, columns];
@@ -173,24 +200,29 @@ public class IconManager : MonoBehaviour
             if (visitedGrids[grid.x, grid.y]) continue;
 
             cluster = new List<Vector2Int>();
-            FindCluster(grid.x, grid.y, spriteRenderers[grid.x, grid.y]);
+            FindCluster(grid.x, grid.y, iconItems[grid.x, grid.y].id);
 
             if (cluster.Count >= 3)
             {
                 foreach (var icon in cluster)
                 {
+                    if (scoredGrid.Contains(icon)) continue;
+                    scoredGrid.Add(icon);
                     movingGrids.Remove(icon);
-                    Instantiate(clusterBGPrefab, spriteRenderers[icon.x, icon.y].transform);
+                    Instantiate(clusterBGPrefab, iconObjects[icon.x, icon.y].transform);
+
+                    // score
+                    CalculateScore(iconItems[icon.x, icon.y].prize);
                 }
 
-                print("> 3 cluster count: " + cluster.Count);
+                // print("> 3 cluster count: " + cluster.Count);
             }
 
-            print("cluster count: " + cluster.Count);
+            // print("cluster count: " + cluster.Count);
         }
     }
 
-    private void FindCluster(int x, int y, SpriteRenderer icon)
+    private void FindCluster(int x, int y, string iconId)
     {
         // 检查是否越界或者已经访问过
         if (x < 0 || x >= rows || y < 0 || y >= columns || visitedGrids[x, y])
@@ -200,7 +232,7 @@ public class IconManager : MonoBehaviour
             return;
 
         // 如果当前格子的类型不匹配，直接返回
-        if (spriteRenderers[x, y].sprite != icon.sprite)
+        if (iconItems[x, y].id != iconId)
             return;
 
         // 标记为已访问
@@ -210,10 +242,10 @@ public class IconManager : MonoBehaviour
         cluster.Add(new Vector2Int(x, y));
 
         // 递归检查上下左右四个方向
-        FindCluster(x + 1, y, icon); // 右
-        FindCluster(x - 1, y, icon); // 左
-        FindCluster(x, y + 1, icon); // 上
-        FindCluster(x, y - 1, icon); // 下
+        FindCluster(x + 1, y, iconId); // 右
+        FindCluster(x - 1, y, iconId); // 左
+        FindCluster(x, y + 1, iconId); // 上
+        FindCluster(x, y - 1, iconId); // 下
     }
 #endregion
 }
