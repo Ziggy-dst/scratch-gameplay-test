@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Utils
 {
-    public static string CalculateMultiProbability(List<IconItemSO.IconItem> probabilityList)
+    public static int CalculateMultiProbability(List<IconItemSO.IconItem> probabilityList)
     {
         var sortedDistribution = probabilityList.OrderBy(x => x.probability);
 
@@ -16,7 +16,7 @@ public class Utils
             if (rand <= accumulatedProbability)
             {
                 // Debug.Log($"accumulatedProbability: {accumulatedProbability}");
-                return d.id;
+                return int.Parse(d.id);
             }
         }
 
