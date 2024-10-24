@@ -11,6 +11,20 @@ public class UIManager : MonoBehaviour
     
     private int _totalScore;
     private int _totalBets;
+    public static UIManager Instance;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     
     private void OnEnable()
     {
