@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridCover : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private BoxCollider2D _boxCollider2D;
     private bool isRevealed = false;
 
     public Vector2Int grid;
@@ -12,6 +13,7 @@ public class GridCover : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
         _spriteRenderer.sortingOrder = 100;
     }
 
@@ -26,6 +28,8 @@ public class GridCover : MonoBehaviour
     private void RevealGrid()
     {
         _spriteRenderer.enabled = false;
+        _boxCollider2D.enabled = false;
         IconManager.OnCoverRevealed?.Invoke(grid);
+        transform.parent.DetachChildren();
     }
 }
