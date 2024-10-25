@@ -47,12 +47,12 @@ public class UIManager : MonoBehaviour
     void UpdateScore(int scoreGained)
     {
         _totalScore += scoreGained;
-        score.DOText($"Score: {_totalScore}", 0.5f, true, ScrambleMode.Numerals);
+        score.DOText($"{_totalScore}", 0.25f, true, ScrambleMode.Numerals);
     }
 
     void UpdateBets(int betPlaced)
     {
         _totalBets += betPlaced;
-        bet.DOText($"Bets Placed: {_totalBets}", 0.5f, true, ScrambleMode.Numerals);
+        bet.DOText($"{_totalBets}", 0.25f, true, ScrambleMode.Numerals);
     }
 }
