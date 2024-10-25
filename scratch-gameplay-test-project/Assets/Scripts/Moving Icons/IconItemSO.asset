@@ -17,19 +17,24 @@ MonoBehaviour:
     name: "\u8292\u679C"
     image: {fileID: 21300000, guid: 46485bd47dba7c347bc05ecdd0d1d75a, type: 3}
     prize: 1
+    probability: 0.25
   - id: 1
     name: "\u67FF\u5B50"
     image: {fileID: 21300000, guid: 5786ac2277493174886c0a20a3a8bc4a, type: 3}
     prize: 2
+    probability: 0.225
   - id: 2
     name: "\u767E\u9999\u679C"
     image: {fileID: 21300000, guid: 18b028c682fd2b245bc5c7ae47c4783a, type: 3}
     prize: 3
+    probability: 0.2
   - id: 3
     name: "\u7315\u7334\u6843"
     image: {fileID: 21300000, guid: 37924828e4898c24fa75774c526648e4, type: 3}
     prize: 4
+    probability: 0.175
   - id: 4
     name: "\u897F\u74DC"
     image: {fileID: 21300000, guid: fe8c9f1cdd8e5f743a9a29bf269cec68, type: 3}
     prize: 5
+    probability: 0.15
