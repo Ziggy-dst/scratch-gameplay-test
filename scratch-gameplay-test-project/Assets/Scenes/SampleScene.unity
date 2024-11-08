@@ -510,6 +510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin Toss Controller V2
       objectReference: {fileID: 0}
+    - target: {fileID: 3154327012196815347, guid: 86dd63483bd25c44da9ff2edbf2fc0db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -855,7 +859,7 @@ MonoBehaviour:
   IconItemSo: {fileID: 11400000, guid: 36d9bd2d223484f1da0c2a9409189dea, type: 2}
   rows: 3
   columns: 3
-  generateStartPoint: {x: 0, y: 0}
+  generateStartPoint: {x: -1, y: 1}
   coverPrefab: {fileID: 7216444382827142739, guid: bd66bcdceaa3c4857b6b94be30dff70a, type: 3}
   clusterBGPrefab: {fileID: 1999847816972837662, guid: 5a875deaca7a94e279f8da2b559c7af4, type: 3}
 --- !u!4 &398084397
@@ -1587,6 +1591,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &878196180
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6812526962298871323, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_Name
+      value: Coin Toss Controller V1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812526962298871323, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810107315155832405, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a40f0553371b2a24e87c906586204ea8, type: 3}
 --- !u!1 &914854565
 GameObject:
   m_ObjectHideFlags: 0
@@ -3088,5 +3153,6 @@ SceneRoots:
   - {fileID: 514860152}
   - {fileID: 1410424822}
   - {fileID: 1928161136}
-  - {fileID: 137172461}
   - {fileID: 952482836}
+  - {fileID: 878196180}
+  - {fileID: 137172461}

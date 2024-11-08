@@ -40,13 +40,13 @@ public class TossControllerVariantV2 : MonoBehaviour
     {
         Rotate();
         
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Toss(_mouseWorldPos);
             AudioSource.PlayClipAtPoint(tossSound, Vector2.zero);
         }
         
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0))
         {
             _currentComboTimer += Time.deltaTime;
             if (_currentComboTimer >= comboThreshold)
@@ -57,7 +57,7 @@ public class TossControllerVariantV2 : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(1)) _currentComboTimer = 0;
+        if (Input.GetMouseButtonUp(0)) _currentComboTimer = 0;
 
         if (Input.GetKey(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

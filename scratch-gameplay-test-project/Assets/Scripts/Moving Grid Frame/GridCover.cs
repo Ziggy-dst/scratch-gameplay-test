@@ -21,12 +21,14 @@ public class GridCover : MonoBehaviour
     {
         if (IconManager.isIconMoving) return;
         if (isRevealed) return;
-        isRevealed = true;
-        RevealGrid();
+        // isRevealed = true;
+        // RevealGrid();
     }
 
-    private void RevealGrid()
+    public void RevealGrid()
     {
+        isRevealed = true;
+        
         _spriteRenderer.enabled = false;
         _boxCollider2D.enabled = false;
         IconManager.OnCoverRevealed?.Invoke(grid);

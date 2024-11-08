@@ -43,9 +43,12 @@ public class Coin : MonoBehaviour
                 }
             }
             _targetGrid.GetComponent<SpriteRenderer>()?.DOColor(Color.red, 0.25f).SetEase(Ease.Flash, 4, 0);
-            TMP_Text gridTMP = _targetGrid.GetComponentInChildren<TMP_Text>();
-            gridTMP.text = (Int32.Parse(gridTMP.text) + price).ToString();
-            OnBetPlaced?.Invoke(price);
+            
+            // TMP_Text gridTMP = _targetGrid.GetComponentInChildren<TMP_Text>();
+            // gridTMP.text = (Int32.Parse(gridTMP.text) + price).ToString();
+            // OnBetPlaced?.Invoke(price);
+            
+            _targetGrid.GetComponent<GridCover>().RevealGrid();
         }
 
         DOVirtual.DelayedCall(2, (() =>
