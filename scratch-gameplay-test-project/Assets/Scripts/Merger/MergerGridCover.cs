@@ -28,6 +28,8 @@ public class MergerGridCover : GridCover
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _spriteRenderer.sortingOrder = 100;
+
+        transform.Find("MergerBG").SetParent(null); // set up grid BG
     }
 
     private void OnMouseEnter()
@@ -97,7 +99,7 @@ public class MergerGridCover : GridCover
         //OnComplete =>
         //Destroy cluster Icons
         //Instantiate new Icons
-        //Randomly DoMove to grids
+        //Randomly DoMove to cluster grids
         
         //TODO: IconManager.OnMergeStateChanged?.Invoke(false);
         //IconManager Check new empty grids and reset cover
