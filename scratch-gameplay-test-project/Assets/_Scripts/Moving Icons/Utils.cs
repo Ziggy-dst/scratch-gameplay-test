@@ -22,4 +22,23 @@ public class Utils
 
         return default;
     }
+
+    public static int CalculateMultiProbability(List<ItemData> probabilityList)
+    {
+        var sortedDistribution = probabilityList.OrderBy(x => x.probability);
+
+        float rand = Random.value;
+        float accumulatedProbability = 0;
+        foreach (var d in sortedDistribution)
+        {
+            accumulatedProbability += d.probability;
+            if (rand <= accumulatedProbability)
+            {
+                // Debug.Log($"accumulatedProbability: {accumulatedProbability}");
+                return int.Parse(d.id);
+            }
+        }
+
+        return default;
+    }
 }

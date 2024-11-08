@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1a61eeff7de446aba2ecc7298738fb, type: 3}
+  m_Name: GridItemSO
+  m_EditorClassIdentifier: 
+  itemPool:
+  - id: 0
+    type: 0
+    level: 0
+    image: {fileID: 21300000, guid: 46485bd47dba7c347bc05ecdd0d1d75a, type: 3}
+    prize: 0
+    probability: 0.25
+  - id: 1
+    type: 0
+    level: 0
+    image: {fileID: 21300000, guid: 5786ac2277493174886c0a20a3a8bc4a, type: 3}
+    prize: 0
+    probability: 0.225
+  - id: 2
+    type: 0
+    level: 0
+    image: {fileID: 21300000, guid: 18b028c682fd2b245bc5c7ae47c4783a, type: 3}
+    prize: 0
+    probability: 0.2
+  - id: 3
+    type: 0
+    level: 0
+    image: {fileID: 21300000, guid: 37924828e4898c24fa75774c526648e4, type: 3}
+    prize: 0
+    probability: 0.175
+  - id: 4
+    type: 0
+    level: 0
+    image: {fileID: 21300000, guid: fe8c9f1cdd8e5f743a9a29bf269cec68, type: 3}
+    prize: 0
+    probability: 0.15
