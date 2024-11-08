@@ -1,13 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClusterDetector : MonoBehaviour
+public class ClusterDetector
 {
-    // private GridData gridData;
+    // private GridData _gridData;
     //
-    // public ClusterDetector(GridData gridData)
+    // private int _rows;
+    // private int _columns;
+    //
+    // // grid of revealed icon grids
+    // private List<Vector2Int> revealedGrids = new List<Vector2Int>();
+    // private List<Vector2Int> movingGrids = new List<Vector2Int>();
+    //
+    // private bool[,] visitedGrids;
+    // private List<Vector2Int> cluster = new List<Vector2Int>();
+    //
+    // private List<Vector2Int> scoredGrid = new List<Vector2Int>();
+    //
+    // public ClusterDetector(int rows, int columns, GridData gridData)
     // {
-    //     this.gridData = gridData;
+    //
+    //     this._gridData = gridData;
     // }
     //
     // public void CheckClusters(List<Vector2Int> revealedGrids)
@@ -17,7 +30,7 @@ public class ClusterDetector : MonoBehaviour
     //
     // private void CheckClusters()
     // {
-    //     visitedGrids = new bool[rows, columns];
+    //     visitedGrids = new bool[_rows, _columns];
     //
     //     foreach (var grid in revealedGrids)
     //     {
@@ -33,10 +46,10 @@ public class ClusterDetector : MonoBehaviour
     //                 if (scoredGrid.Contains(icon)) continue;
     //                 scoredGrid.Add(icon);
     //                 movingGrids.Remove(icon);
-    //                 Instantiate(clusterBGPrefab, iconObjects[icon.x, icon.y].transform);
+    //                 // Instantiate(clusterBGPrefab, iconObjects[icon.x, icon.y].transform);
     //
     //                 // score
-    //                 CalculateScore(iconItems[icon.x, icon.y].prize);
+    //                 // CalculateScore(iconItems[icon.x, icon.y].prize);
     //             }
     //
     //             // print("> 3 cluster count: " + cluster.Count);
@@ -49,7 +62,7 @@ public class ClusterDetector : MonoBehaviour
     // private void FindCluster(int x, int y, string iconId)
     // {
     //     // 检查是否越界或者已经访问过
-    //     if (x < 0 || x >= rows || y < 0 || y >= columns || visitedGrids[x, y])
+    //     if (x < 0 || x >= _rows || y < 0 || y >= _columns || visitedGrids[x, y])
     //         return;
     //
     //     if (!revealedGrids.Contains(new Vector2Int(x, y)))

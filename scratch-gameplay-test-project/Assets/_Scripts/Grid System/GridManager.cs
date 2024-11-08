@@ -24,10 +24,11 @@ public class GridManager : MonoBehaviour
         // gridGenerator.OnGridGenerated += OnGridGenerated;
         gridGenerator.GenerateAllGrids();
 
-        foreach (var item in _gridData.items)
-        {
-            print(item.GetComponent<GridItem>().itemData.id);
-        }
+        // foreach (var item in _gridData.items[Gri])
+        // {
+        //     print(item.GetComponent<GridItem>().);
+        //     print(item.GetComponent<GridItem>().itemData.level);
+        // }
     }
 
     private void OnGridGenerated()

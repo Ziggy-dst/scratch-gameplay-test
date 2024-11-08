@@ -43,7 +43,12 @@ public class GridGenerator
         cover.AddComponent<GridCover>().grid = new Vector2Int(i, j);
     }
 
-    public void GenerateSingleGrid(Transform parent, int row, int column)
+    public ItemData FetchGridItem(GridItemType type, int level)
+    {
+        return _gridItemSo.itemPool[type].itemLevelData[level];
+    }
+
+    public void GenerateRandomGrid(Transform parent, int row, int column)
     {
         GameObject itemObject = new GameObject("Item" + row + "_" + column)
         {
@@ -55,18 +60,53 @@ public class GridGenerator
             }
         };
 
-        _gridData.items[row, column] = itemObject.transform;
-
         // randomize icon item
-        var randItemData = _gridItemSo.itemPool[Utils.CalculateMultiProbability(_gridItemSo.itemPool)];
-        // var gridItem = itemObject.AddComponent<GridItem>().itemData;
-        itemObject.AddComponent<GridItem>().itemData = randItemData;
+        var itemType = Utils.CalculateMultiProbability(_gridItemSo.itemPool);
+        int randItemLevelDataIndex = Utils.CalculateMultiProbability(_gridItemSo.itemPool[itemType].itemLevelData);
+        var itemData = FetchGridItem(itemType, randItemLevelDataIndex);
+
+        var gridItem = itemObject.AddComponent<GridItem>();
+        gridItem.type = itemType;
+        gridItem.itemData = itemData;
+
+        _gridData.items[row, column] = gridItem;
 
         // SetItemData(gridItem, randItemData);
 
         // set sprite
         SpriteRenderer sr = itemObject.AddComponent<SpriteRenderer>();
-        sr.sprite = randItemData.image;
+        sr.sprite = itemData.image;
+
+        // add cover
+        GenerateCover(itemObject.transform, row, column);
+    }
+
+    public void GenerateSingleGrid(Transform parent, int row, int column, GridItemType type, int level)
+    {
+        GameObject itemObject = new GameObject("Item" + row + "_" + column)
+        {
+            transform =
+            {
+                // set position
+                parent = parent.transform,
+                position = new Vector2(_startPoint.x + column, _startPoint.y - row)
+            }
+        };
+
+        var itemType = type;
+        var itemData = FetchGridItem(itemType, level);
+
+        var gridItem = itemObject.AddComponent<GridItem>();
+        gridItem.type = itemType;
+        gridItem.itemData = itemData;
+
+        _gridData.items[row, column] = gridItem;
+
+        // SetItemData(gridItem, randItemData);
+
+        // set sprite
+        SpriteRenderer sr = itemObject.AddComponent<SpriteRenderer>();
+        sr.sprite = itemData.image;
 
         // add cover
         GenerateCover(itemObject.transform, row, column);
@@ -74,14 +114,14 @@ public class GridGenerator
 
     public void GenerateAllGrids()
     {
-        _gridData.items = new Transform[_rows, _columns];
+        _gridData.items = new GridItem[_rows, _columns];
         GameObject iconParentObject = new GameObject("Icons");
 
         for (int i = 0; i < _rows; i++)
         {
             for (int j = 0; j < _columns; j++)
             {
-                GenerateSingleGrid(iconParentObject.transform, i, j);
+                GenerateRandomGrid(iconParentObject.transform, i, j);
             }
         }
     }

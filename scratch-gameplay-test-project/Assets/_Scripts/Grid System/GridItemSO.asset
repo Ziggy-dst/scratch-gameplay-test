@@ -12,34 +12,318 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1a61eeff7de446aba2ecc7298738fb, type: 3}
   m_Name: GridItemSO
   m_EditorClassIdentifier: 
-  itemPool:
-  - id: 0
-    type: 0
-    level: 0
-    image: {fileID: 21300000, guid: 46485bd47dba7c347bc05ecdd0d1d75a, type: 3}
-    prize: 0
-    probability: 0.25
-  - id: 1
-    type: 0
-    level: 0
-    image: {fileID: 21300000, guid: 5786ac2277493174886c0a20a3a8bc4a, type: 3}
-    prize: 0
-    probability: 0.225
-  - id: 2
-    type: 0
-    level: 0
-    image: {fileID: 21300000, guid: 18b028c682fd2b245bc5c7ae47c4783a, type: 3}
-    prize: 0
-    probability: 0.2
-  - id: 3
-    type: 0
-    level: 0
-    image: {fileID: 21300000, guid: 37924828e4898c24fa75774c526648e4, type: 3}
-    prize: 0
-    probability: 0.175
-  - id: 4
-    type: 0
-    level: 0
-    image: {fileID: 21300000, guid: fe8c9f1cdd8e5f743a9a29bf269cec68, type: 3}
-    prize: 0
-    probability: 0.15
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 6733053254700356342, guid: 95a5f3f045942434380d129b1af4729f, type: 3}
+    - {fileID: 9190343980590445113, guid: eb2aeed0565e3f44f94a6686cffa4405, type: 3}
+    - {fileID: -8877849883241513997, guid: e3667be673d95864ab14f90ae7b63b8b, type: 3}
+    - {fileID: 3498143683320141249, guid: f2ee1c2bb67951c4b9df043f1e7640c9, type: 3}
+    - {fileID: -7319480624113640418, guid: 0016efa9ab1c2ea449b0c90622fb50f2, type: 3}
+    - {fileID: 8762252551396077489, guid: 6cd275d66268ed142bcec5f75a057ac5, type: 3}
+    - {fileID: -1869056002067779203, guid: 61c6f3c19d26e58498a45c01db51a84a, type: 3}
+    - {fileID: 4173006831769432869, guid: bee27fa8bfaae5b42978b578c18ed069, type: 3}
+    - {fileID: -193687487514039035, guid: 030b2d8660d4e4a43adb09e6223cbd79, type: 3}
+    - {fileID: -2041788141536361018, guid: 13b78fa2159028f4ca58295aa159f125, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: itemPool
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[GridItemType, Assembly-CSharp],[GridTypeData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[GridItemType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: GridTypeData, Assembly-CSharp
+    - Name: itemLevelData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 0
+    - Name: id
+      Entry: 1
+      Data: 0
+    - Name: image
+      Entry: 10
+      Data: 0
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.25
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 1
+    - Name: id
+      Entry: 1
+      Data: 1
+    - Name: image
+      Entry: 10
+      Data: 1
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.225
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 2
+    - Name: id
+      Entry: 1
+      Data: 2
+    - Name: image
+      Entry: 10
+      Data: 2
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 3
+    - Name: id
+      Entry: 1
+      Data: 3
+    - Name: image
+      Entry: 10
+      Data: 3
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.175
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 4
+    - Name: id
+      Entry: 1
+      Data: 4
+    - Name: image
+      Entry: 10
+      Data: 4
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeProbability
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: GridTypeData, Assembly-CSharp
+    - Name: itemLevelData
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ItemData, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 0
+    - Name: id
+      Entry: 1
+      Data: 5
+    - Name: image
+      Entry: 10
+      Data: 5
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.25
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 1
+    - Name: id
+      Entry: 1
+      Data: 6
+    - Name: image
+      Entry: 10
+      Data: 6
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.225
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 2
+    - Name: id
+      Entry: 1
+      Data: 7
+    - Name: image
+      Entry: 10
+      Data: 7
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 3
+    - Name: id
+      Entry: 1
+      Data: 8
+    - Name: image
+      Entry: 10
+      Data: 8
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.175
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: ItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 4
+    - Name: id
+      Entry: 1
+      Data: 9
+    - Name: image
+      Entry: 10
+      Data: 9
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0.15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeProbability
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

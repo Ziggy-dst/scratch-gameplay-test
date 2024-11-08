@@ -1,11 +1,19 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GridItemSO", menuName = "Scriptable Objects/GridItemSO")]
-public class GridItemSO : ScriptableObject
+public class GridItemSO : SerializedScriptableObject
 {
-    public List<ItemData> itemPool = new List<ItemData>();
+    public Dictionary<GridItemType, GridTypeData> itemPool = new Dictionary<GridItemType, GridTypeData>();
+}
+
+[Serializable]
+public struct GridTypeData
+{
+    public List<ItemData> itemLevelData;
+    public float typeProbability;
 }
 
 
