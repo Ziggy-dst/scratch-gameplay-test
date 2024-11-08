@@ -11,6 +11,8 @@ public class MergerGridCover : GridCover
     private bool isRevealing = false;
     private bool isMerging = false;
 
+    // private SpriteRenderer _mergerBG;
+
     public Vector2Int grid;
 
     private void OnEnable()
@@ -29,7 +31,7 @@ public class MergerGridCover : GridCover
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _spriteRenderer.sortingOrder = 100;
 
-        transform.Find("MergerBG").SetParent(null); // set up grid BG
+        // _mergerBG = transform.Find("MergerBG").GetComponent<SpriteRenderer>();
     }
 
     private void OnMouseEnter()
@@ -40,6 +42,7 @@ public class MergerGridCover : GridCover
         else
         {
             //Check cluster and display
+            GridManager.onMouseOverRevealedItem?.Invoke(grid);
         }
     }
 
@@ -51,6 +54,7 @@ public class MergerGridCover : GridCover
         else
         {
             //Hide cluster
+            GridManager.onMouseExitRevealedItem?.Invoke();
         }
     }
 
@@ -60,7 +64,8 @@ public class MergerGridCover : GridCover
         if (isRevealing || isMerging) return;
         
         RevealGrid();
-        Merge();
+
+        // if (isRevealed) Merge();
     }
 
     public void RevealGrid()
@@ -74,34 +79,7 @@ public class MergerGridCover : GridCover
         {
             isRevealed = true;
             isRevealing = false;
-            IconManager.OnCoverRevealed?.Invoke(grid);
+            GridManager.onCoverRevealStateChanged?.Invoke(grid, true);
         }));
-    }
-
-    public void Merge()
-    {
-        if (!isRevealed) return;
-        
-        //TODO: IconManager.OnMergeStateChanged?.Invoke(true);
-        
-        //Get Current Cluster from somewhere
-        
-        //switch cluster number
-        //case 1 return
-        //case 2 merge 1
-        //case 3-4 merge 2
-        //case 5 merge 3
-        //case 6-7 merge 4
-        //case 8 merge 5
-        //case 9 merge 6
-        
-        //Icons in cluster DOMove here
-        //OnComplete =>
-        //Destroy cluster Icons
-        //Instantiate new Icons
-        //Randomly DoMove to cluster grids
-        
-        //TODO: IconManager.OnMergeStateChanged?.Invoke(false);
-        //IconManager Check new empty grids and reset cover
     }
 }

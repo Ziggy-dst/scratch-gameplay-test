@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridGenerator
@@ -18,29 +19,23 @@ public class GridGenerator
         _gridData = gridData;
     }
 
-    // private void SetItemData(ItemData item, ItemData data)
-    // {
-    //     item.image = data.image;
-    //     item.id = data.id;
-    //     item.probability = data.probability;
-    //     item.prize = data.prize;
-    //     item.type = data.type;
-    //     item.level = data.level;
-    // }
-
-    private void GenerateCover(Transform parent, int i, int j)
+    private void GenerateCover(Transform parent, int row, int column)
     {
-        GameObject cover = new GameObject("cover_" + i + "_" + j)
+        GameObject cover = new GameObject("cover_" + row + "_" + column)
         {
             transform =
             {
                 // set position
                 parent = parent.transform,
-                position = new Vector2(_startPoint.x + j, _startPoint.y - i)
+                position = new Vector2(_startPoint.x + column, _startPoint.y - row)
             }
         };
-        cover.AddComponent<SpriteRenderer>().color = Color.gray;
-        cover.AddComponent<GridCover>().grid = new Vector2Int(i, j);
+        var spriteRenderer = cover.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = Resources.Load<Sprite>("DefaultAssets/Textures/Square");
+        spriteRenderer.color = Color.gray;
+
+        spriteRenderer.sortingOrder = 999;
+        cover.AddComponent<MergerGridCover>().grid = new Vector2Int(row, column);
     }
 
     public ItemData FetchGridItem(GridItemType type, int level)
@@ -115,6 +110,8 @@ public class GridGenerator
     public void GenerateAllGrids()
     {
         _gridData.items = new GridItem[_rows, _columns];
+        _gridData.revealedGrids = new List<Vector2Int>();
+
         GameObject iconParentObject = new GameObject("Icons");
 
         for (int i = 0; i < _rows; i++)
