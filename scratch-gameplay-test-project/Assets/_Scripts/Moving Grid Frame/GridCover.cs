@@ -25,7 +25,7 @@ public class GridCover : MonoBehaviour
         // RevealGrid();
     }
 
-    public void RevealGrid()
+    public virtual void RevealGrid()
     {
         isRevealed = true;
         

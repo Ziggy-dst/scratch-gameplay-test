@@ -8,6 +8,7 @@ public class GridManager : MonoBehaviour
     public static Action<Vector2Int, bool> onCoverRevealStateChanged;
     public static Action<Vector2Int> onMouseOverRevealedItem;
     public static Action onMouseExitRevealedItem;
+    public static Action<Vector2Int> onMouseDownRevealedItem;
 
     public GridItemSO gridItemSo;
     public GameObject clusterBGPrefab;
@@ -17,16 +18,17 @@ public class GridManager : MonoBehaviour
     public Vector2 generateStartPoint = Vector2.zero;
 
     private GridData _gridData;
-    private GridGenerator gridGenerator;
-    private GridItemMerger gridItemMerger;
+    private GridGenerator _gridGenerator;
+    private GridItemMerger _gridItemMerger;
     // private IconMover iconMover;
-    private ClusterDetector clusterDetector;
+    private ClusterDetector _clusterDetector;
 
     private void OnEnable()
     {
         onCoverRevealStateChanged += OnGridRevealStateChanged;
         onMouseOverRevealedItem += OnMouseOverRevealedItem;
         onMouseExitRevealedItem += OnMouseExitRevealedItem;
+        onMouseDownRevealedItem += OnMouseDownRevealedItem;
     }
 
     private void OnDisable()
@@ -34,25 +36,17 @@ public class GridManager : MonoBehaviour
         onCoverRevealStateChanged -= OnGridRevealStateChanged;
         onMouseOverRevealedItem -= OnMouseOverRevealedItem;
         onMouseExitRevealedItem -= OnMouseExitRevealedItem;
+        onMouseDownRevealedItem -= OnMouseDownRevealedItem;
     }
 
     void Start()
     {
         _gridData = new GridData();
-        gridGenerator = new GridGenerator(rows, columns, generateStartPoint, gridItemSo, _gridData);
-        // iconMover = new IconMover(gridData);
-        clusterDetector = new ClusterDetector(rows, columns, _gridData);
 
-        // gridGenerator.OnGridGenerated += OnGridGenerated;
-        gridGenerator.GenerateAllGrids();
-
-        // gridItemMerger = new GridItemMerger(_gridData.items, )
-
-        // foreach (var item in _gridData.items[Gri])
-        // {
-        //     print(item.GetComponent<GridItem>().);
-        //     print(item.GetComponent<GridItem>().itemData.level);
-        // }
+        _gridGenerator = new GridGenerator(rows, columns, generateStartPoint, gridItemSo, _gridData);
+        _clusterDetector = new ClusterDetector(rows, columns, _gridData);
+        _gridGenerator.GenerateAllGrids();
+        _gridItemMerger = new GridItemMerger(gridItemSo, _gridData);
     }
 
     private void OnGridGenerated()
@@ -71,14 +65,16 @@ public class GridManager : MonoBehaviour
         else _gridData.revealedGrids.Remove(revealedGrid);
     }
 
+    private List<Vector2Int> _cluster = new List<Vector2Int>();
     private void OnMouseOverRevealedItem(Vector2Int originItemGrid)
     {
-        var cluster = clusterDetector.CheckClusters(originItemGrid);
-        if (cluster.Count < 2) return;
+        _cluster = _clusterDetector.CheckClusters(originItemGrid);
+        if (_cluster is null) return;
+        if (_cluster.Count < 2) return;
         // set bg color
-        foreach (var i in cluster)
+        foreach (var i in _cluster)
         {
-            Instantiate(clusterBGPrefab, i.transform);
+            Instantiate(clusterBGPrefab, _gridData.items[i.x, i.y].transform);
         }
     }
 
@@ -87,5 +83,37 @@ public class GridManager : MonoBehaviour
         // reset color
         var clusterBGs = GameObject.FindGameObjectsWithTag("ClusterBG");
         foreach (var c in clusterBGs) Destroy(c);
+    }
+
+    private void OnMouseDownRevealedItem(Vector2Int mergeOrigin)
+    {
+        if (_cluster is null) return;
+        if (_cluster.Count < 2) return;
+        var gridItemSpawnData = _gridItemMerger.CheckMerge(_cluster);
+
+        var mergedGrids = gridItemSpawnData.mergedGrids;
+
+        DeleteGridItem(_cluster);
+
+        foreach (var m in mergedGrids)
+        {
+            _gridGenerator.GenerateSingleGrid(m.x, m.y, gridItemSpawnData.itemType, gridItemSpawnData.itemData.level);
+            _cluster.Remove(m);
+        }
+
+        foreach (var i in _cluster)
+        {
+            _gridGenerator.GenerateRandomGrid(i.x, i.y);
+            _gridData.covers[i.x, i.y].Reset();
+            _gridData.revealedGrids.Remove(i);
+        }
+    }
+
+    private void DeleteGridItem(List<Vector2Int> deleteList)
+    {
+        foreach (var d in deleteList)
+        {
+            Destroy(_gridData.items[d.x, d.y].gameObject);
+        }
     }
 }

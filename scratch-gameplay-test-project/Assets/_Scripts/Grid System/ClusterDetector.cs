@@ -9,7 +9,7 @@ public class ClusterDetector
     private int _columns;
 
     private bool[,] visitedGrids;
-    private List<GridItem> cluster = new List<GridItem>();
+    private List<Vector2Int> cluster = new List<Vector2Int>();
 
     // private List<Vector2Int> scoredGrid = new List<Vector2Int>();
 
@@ -20,13 +20,16 @@ public class ClusterDetector
         _gridData = gridData;
     }
 
-    public List<GridItem> CheckClusters(Vector2Int originItem)
+    public List<Vector2Int> CheckClusters(Vector2Int originItem)
     {
+        // TODO: change max level
+        if (_gridData.items[originItem.x, originItem.y].itemData.level == 4) return null;
+
         visitedGrids = new bool[_rows, _columns];
 
         // Debug.Log("origin: " + originItem);
 
-        cluster = new List<GridItem>();
+        cluster = new List<Vector2Int>();
         FindCluster(originItem.x, originItem.y, _gridData.items[originItem.x, originItem.y].itemData.id);
 
         return cluster;
@@ -49,7 +52,7 @@ public class ClusterDetector
         visitedGrids[x, y] = true;
 
         // 将当前格子加入到聚集中
-        cluster.Add(_gridData.items[x, y]);
+        cluster.Add(new Vector2Int(x, y));
 
         // 递归检查上下左右四个方向
         FindCluster(x + 1, y, iconId); // 右

@@ -3,10 +3,10 @@ using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))][RequireComponent(typeof(BoxCollider2D))]
-public class MergerGridCover : GridCover
+public class MergerGridCover : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
-    private BoxCollider2D _boxCollider2D;
+    // private BoxCollider2D _boxCollider2D;
     private bool isRevealed = false;
     private bool isRevealing = false;
     private bool isMerging = false;
@@ -28,7 +28,7 @@ public class MergerGridCover : GridCover
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _boxCollider2D = GetComponent<BoxCollider2D>();
+        // _boxCollider2D = GetComponent<BoxCollider2D>();
         _spriteRenderer.sortingOrder = 100;
 
         // _mergerBG = transform.Find("MergerBG").GetComponent<SpriteRenderer>();
@@ -62,24 +62,29 @@ public class MergerGridCover : GridCover
     {
         // if (IconManager.isIconMoving) return;
         if (isRevealing || isMerging) return;
-        
-        RevealGrid();
 
-        // if (isRevealed) Merge();
+        if (isRevealed) GridManager.onMouseDownRevealedItem?.Invoke(grid);
+        else RevealGrid();
     }
 
-    public void RevealGrid()
+    private void RevealGrid()
     {
-        if (isRevealed) return;
         isRevealing = true;
         
         //Generate Icon
-        
+
         _spriteRenderer.DOFade(0, 0.1f).OnComplete((() =>
         {
             isRevealed = true;
             isRevealing = false;
             GridManager.onCoverRevealStateChanged?.Invoke(grid, true);
         }));
+    }
+
+    public void Reset()
+    {
+        isRevealed = false;
+        _spriteRenderer.DOFade(1, 0);
+        _spriteRenderer.DOColor(Color.gray, 0);
     }
 }

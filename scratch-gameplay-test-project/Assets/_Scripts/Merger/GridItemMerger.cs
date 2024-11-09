@@ -1,33 +1,76 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace _Scripts.Merger
 {
+    public struct LeveledUpGridItemSpawnData
+    {
+        public GridItemType itemType;
+        public ItemData itemData;
+        public List<Vector2Int> mergedGrids;
+    }
+
     public class GridItemMerger
     {
-        private GridItem[,] _items;
-        private List<GridItem> _cluster;
+        private GridItemSO _gridItemSo;
+        private GridData _gridData;
 
-        public GridItemMerger(GridItem[,] items, List<GridItem> cluster)
+        public GridItemMerger(GridItemSO gridItemSo, GridData gridData)
         {
-            _items = items;
-            _cluster = cluster;
+            _gridItemSo = gridItemSo;
+            _gridData = gridData;
         }
 
-        public void Merge()
+        public LeveledUpGridItemSpawnData CheckMerge(List<Vector2Int> cluster)
         {
             //TODO: IconManager.OnMergeStateChanged?.Invoke(true);
+            LeveledUpGridItemSpawnData leveledUpGridItemSpawnData;
 
+            int clusterCount = cluster.Count;
+
+            int countAfterMerge = 0;
             //Get Current Cluster from somewhere
+            switch (clusterCount)
+            {
+                case 2:
+                    //get merge result
+                    countAfterMerge = 1;
+                    //clear all items in cluster
+                    //pick random items to become result
+                    break;
+                case <= 4:
+                    countAfterMerge = 2;
+                    break;
+                case 5:
+                    countAfterMerge = 3;
+                    break;
+                case <= 7:
+                    countAfterMerge = 4;
+                    break;
+                case 8:
+                    countAfterMerge = 5;
+                    break;
+                case 9:
+                    countAfterMerge = 6;
+                    break;
+            }
 
-            //switch cluster number
-            //case 1 return
-            //case 2 merge 1
-            //case 3-4 merge 2
-            //case 5 merge 3
-            //case 6-7 merge 4
-            //case 8 merge 5
-            //case 9 merge 6
+            GridItem currentGridItem = _gridData.items[cluster[0].x, cluster[0].y];
+
+            int currentLevel = currentGridItem.itemData.level;
+
+            GridItemType currentItemType = currentGridItem.type;
+            ItemData leveledUpItemData = _gridItemSo.itemPool[currentItemType].itemLevelData[currentLevel+1];
+            var mergedGrids = GetMergeGrid(cluster, countAfterMerge);
+
+            leveledUpGridItemSpawnData.itemType = currentItemType;
+            leveledUpGridItemSpawnData.itemData = leveledUpItemData;
+            leveledUpGridItemSpawnData.mergedGrids = mergedGrids;
+
+            return leveledUpGridItemSpawnData;
+            
 
             //Icons in cluster DOMove here
             //OnComplete =>
@@ -37,6 +80,15 @@ namespace _Scripts.Merger
 
             //TODO: IconManager.OnMergeStateChanged?.Invoke(false);
             //IconManager Check new empty grids and reset cover
+        }
+
+        private List<Vector2Int> GetMergeGrid(List<Vector2Int> cluster, int count)
+        {
+            // get spawn grid position
+            if (count > cluster.Count)
+                throw new ArgumentException("Requested count is greater than the list size.");
+
+            return cluster.OrderBy(x => Guid.NewGuid()).Take(count).ToList();
         }
     }
 }
