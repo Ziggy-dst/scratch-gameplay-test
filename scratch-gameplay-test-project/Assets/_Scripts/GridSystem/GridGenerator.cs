@@ -74,7 +74,8 @@ namespace _Scripts.GridSystem
                 {
                     // set position
                     parent = itemParentObject.transform,
-                    position = new Vector2(_startPoint.x + column, _startPoint.y - row)
+                    position = new Vector2(_startPoint.x + column, _startPoint.y - row),
+                    localScale = Vector3.one * 0.6f
                 }
             };
 
@@ -103,7 +104,8 @@ namespace _Scripts.GridSystem
                 {
                     // set position
                     parent = itemParentObject.transform,
-                    position = new Vector2(_startPoint.x + column, _startPoint.y - row)
+                    position = new Vector2(_startPoint.x + column, _startPoint.y - row),
+                    localScale = Vector3.one * 0.6f
                 }
             };
 
