@@ -1880,6 +1880,8 @@ MonoBehaviour:
   rows: 3
   columns: 3
   generateStartPoint: {x: 0, y: 0}
+  chickSound: {fileID: 8300000, guid: e9e954e36133aaa4cbb2d38617be49ca, type: 3}
+  treeSound: {fileID: 8300000, guid: 22d545d5ae6fbb24ea2b75de87ffc8eb, type: 3}
 --- !u!4 &1737807148
 Transform:
   m_ObjectHideFlags: 0

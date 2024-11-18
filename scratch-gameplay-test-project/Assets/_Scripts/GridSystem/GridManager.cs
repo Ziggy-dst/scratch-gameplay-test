@@ -19,6 +19,10 @@ namespace _Scripts.GridSystem
         public int columns = 5;
         public Vector2 generateStartPoint = Vector2.zero;
 
+        [Header("SFX")] 
+        public AudioClip chickSound;
+        public AudioClip treeSound;
+        
         private GridData _gridData;
         private GridGenerator _gridGenerator;
         private GridItemMerger _gridItemMerger;
@@ -95,6 +99,10 @@ namespace _Scripts.GridSystem
             var gridItemSpawnData = _gridItemMerger.CheckMerge(_cluster);
 
             var mergedGrids = gridItemSpawnData.mergedGrids;
+            
+            if (_gridData.items[mergeOrigin.x, mergeOrigin.y].type == GridItemType.Apple)
+                AudioSource.PlayClipAtPoint(treeSound, Vector3.zero);
+            else AudioSource.PlayClipAtPoint(chickSound, Vector3.zero);
 
             DeleteGridItem(_cluster);
 
