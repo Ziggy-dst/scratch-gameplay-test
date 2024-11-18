@@ -27,7 +27,7 @@ namespace _Scripts.GridSystem
         public List<Vector2Int> CheckClusters(Vector2Int originItem)
         {
             var gridItem = _gridData.items[originItem.x, originItem.y];
-            if (gridItem.GridItemData.level == _gridItemSo.itemPool[gridItem.type].itemLevelData.Count) return null;
+            if (gridItem.GridItemData.level == _gridItemSo.itemPool[gridItem.type].itemLevelData.Count - 1) return null;
 
             visitedGrids = new bool[_rows, _columns];
 
