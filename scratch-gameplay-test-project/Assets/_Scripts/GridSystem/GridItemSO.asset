@@ -21,11 +21,13 @@ MonoBehaviour:
     - {fileID: -8877849883241513997, guid: e3667be673d95864ab14f90ae7b63b8b, type: 3}
     - {fileID: 3498143683320141249, guid: f2ee1c2bb67951c4b9df043f1e7640c9, type: 3}
     - {fileID: -7319480624113640418, guid: 0016efa9ab1c2ea449b0c90622fb50f2, type: 3}
+    - {fileID: 6474808356362779278, guid: e0a15e51df0c77943adfca1cf9dfb346, type: 3}
     - {fileID: 8762252551396077489, guid: 6cd275d66268ed142bcec5f75a057ac5, type: 3}
     - {fileID: -1869056002067779203, guid: 61c6f3c19d26e58498a45c01db51a84a, type: 3}
     - {fileID: 4173006831769432869, guid: bee27fa8bfaae5b42978b578c18ed069, type: 3}
     - {fileID: -193687487514039035, guid: 030b2d8660d4e4a43adb09e6223cbd79, type: 3}
     - {fileID: -2041788141536361018, guid: 13b78fa2159028f4ca58295aa159f125, type: 3}
+    - {fileID: 4801429521721092798, guid: 9737c9f8b193a2046972136957f25697, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -66,7 +68,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
@@ -173,6 +175,27 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 5
+    - Name: id
+      Entry: 1
+      Data: apple_5
+    - Name: image
+      Entry: 10
+      Data: 5
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -202,7 +225,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
@@ -214,7 +237,7 @@ MonoBehaviour:
       Data: chicken_0
     - Name: image
       Entry: 10
-      Data: 5
+      Data: 6
     - Name: prize
       Entry: 3
       Data: 0
@@ -235,7 +258,7 @@ MonoBehaviour:
       Data: chicken_1
     - Name: image
       Entry: 10
-      Data: 6
+      Data: 7
     - Name: prize
       Entry: 3
       Data: 0
@@ -256,7 +279,7 @@ MonoBehaviour:
       Data: chicken_2
     - Name: image
       Entry: 10
-      Data: 7
+      Data: 8
     - Name: prize
       Entry: 3
       Data: 0
@@ -277,7 +300,7 @@ MonoBehaviour:
       Data: chicken_3
     - Name: image
       Entry: 10
-      Data: 8
+      Data: 9
     - Name: prize
       Entry: 3
       Data: 0
@@ -298,7 +321,28 @@ MonoBehaviour:
       Data: chicken_4
     - Name: image
       Entry: 10
-      Data: 9
+      Data: 10
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 5
+    - Name: id
+      Entry: 1
+      Data: chicken_5
+    - Name: image
+      Entry: 10
+      Data: 11
     - Name: prize
       Entry: 3
       Data: 0
