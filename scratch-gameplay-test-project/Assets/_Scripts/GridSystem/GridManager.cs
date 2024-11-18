@@ -96,7 +96,7 @@ namespace _Scripts.GridSystem
         {
             if (_cluster is null) return;
             if (_cluster.Count < 2) return;
-            var gridItemSpawnData = _gridItemMerger.CheckMerge(_cluster);
+            var gridItemSpawnData = _gridItemMerger.CheckMerge(_cluster, mergeOrigin);
 
             var mergedGrids = gridItemSpawnData.mergedGrids;
             
@@ -106,15 +106,18 @@ namespace _Scripts.GridSystem
 
             DeleteGridItem(_cluster);
 
+            // generate upgraded items
             foreach (var m in mergedGrids)
             {
                 _gridGenerator.GenerateSingleGrid(m.x, m.y, gridItemSpawnData.itemType, gridItemSpawnData.GridItemData.level);
                 _cluster.Remove(m);
             }
 
+            // generate random items for vacant grids
             foreach (var i in _cluster)
             {
                 _gridGenerator.GenerateRandomGrid(i.x, i.y);
+                // reset all covers for newly generated grids
                 _gridData.covers[i.x, i.y].Reset();
                 _gridData.revealedGrids.Remove(i);
             }

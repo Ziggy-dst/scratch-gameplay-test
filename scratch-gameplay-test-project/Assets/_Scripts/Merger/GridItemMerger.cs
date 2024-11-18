@@ -24,7 +24,7 @@ namespace _Scripts.Merger
             _gridData = gridData;
         }
 
-        public LeveledUpGridItemSpawnData CheckMerge(List<Vector2Int> cluster)
+        public LeveledUpGridItemSpawnData CheckMerge(List<Vector2Int> cluster, Vector2Int mergeOrigin)
         {
             //TODO: IconManager.OnMergeStateChanged?.Invoke(true);
             LeveledUpGridItemSpawnData leveledUpGridItemSpawnData;
@@ -64,7 +64,7 @@ namespace _Scripts.Merger
 
             GridItemType currentItemType = currentGridItem.type;
             GridItemData leveledUpGridItemData = _gridItemSo.itemPool[currentItemType].itemLevelData[currentLevel+1];
-            var mergedGrids = GetMergeGrid(cluster, countAfterMerge);
+            var mergedGrids = GetMergeGrid(cluster, mergeOrigin, countAfterMerge);
 
             leveledUpGridItemSpawnData.itemType = currentItemType;
             leveledUpGridItemSpawnData.GridItemData = leveledUpGridItemData;
@@ -83,13 +83,22 @@ namespace _Scripts.Merger
             //IconManager Check new empty grids and reset cover
         }
 
-        private List<Vector2Int> GetMergeGrid(List<Vector2Int> cluster, int count)
+        private List<Vector2Int> GetMergeGrid(List<Vector2Int> cluster, Vector2Int mergeOrigin, int count)
         {
             // get spawn grid position
             if (count > cluster.Count)
                 throw new ArgumentException("Requested count is greater than the list size.");
 
-            return cluster.OrderBy(x => Guid.NewGuid()).Take(count).ToList();
+            List<Vector2Int> mergedGrids = new List<Vector2Int>();
+
+            foreach (var grid in cluster)
+            {
+                if (mergedGrids.Count == count) break;
+                if (Vector2.Distance(grid, mergeOrigin) <= Mathf.Sqrt(2)) mergedGrids.Add(grid);
+            }
+
+            return mergedGrids;
+            // return cluster.OrderBy(x => Guid.NewGuid()).Take(count).ToList();
         }
     }
 }
