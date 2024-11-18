@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.GridSystem;
 using UnityEngine;
 
 namespace _Scripts.Merger
@@ -8,7 +9,7 @@ namespace _Scripts.Merger
     public struct LeveledUpGridItemSpawnData
     {
         public GridItemType itemType;
-        public ItemData itemData;
+        public GridItemData GridItemData;
         public List<Vector2Int> mergedGrids;
     }
 
@@ -59,14 +60,14 @@ namespace _Scripts.Merger
 
             GridItem currentGridItem = _gridData.items[cluster[0].x, cluster[0].y];
 
-            int currentLevel = currentGridItem.itemData.level;
+            int currentLevel = currentGridItem.GridItemData.level;
 
             GridItemType currentItemType = currentGridItem.type;
-            ItemData leveledUpItemData = _gridItemSo.itemPool[currentItemType].itemLevelData[currentLevel+1];
+            GridItemData leveledUpGridItemData = _gridItemSo.itemPool[currentItemType].itemLevelData[currentLevel+1];
             var mergedGrids = GetMergeGrid(cluster, countAfterMerge);
 
             leveledUpGridItemSpawnData.itemType = currentItemType;
-            leveledUpGridItemSpawnData.itemData = leveledUpItemData;
+            leveledUpGridItemSpawnData.GridItemData = leveledUpGridItemData;
             leveledUpGridItemSpawnData.mergedGrids = mergedGrids;
 
             return leveledUpGridItemSpawnData;

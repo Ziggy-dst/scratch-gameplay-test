@@ -33,12 +33,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: itemPool
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[GridItemType, Assembly-CSharp],[GridTypeData,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[_Scripts.GridSystem.GridItemType,
+        Assembly-CSharp],[_Scripts.GridSystem.GridTypeData, Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[GridItemType, Assembly-CSharp]],
-        mscorlib
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[_Scripts.GridSystem.GridItemType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -59,22 +59,23 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: GridTypeData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridTypeData, Assembly-CSharp
     - Name: itemLevelData
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[ItemData, Assembly-CSharp]], mscorlib
+      Data: 2|System.Collections.Generic.List`1[[_Scripts.GridSystem.GridItemData,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 0
     - Name: id
       Entry: 1
-      Data: 0
+      Data: apple_0
     - Name: image
       Entry: 10
       Data: 0
@@ -89,13 +90,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 1
     - Name: id
       Entry: 1
-      Data: 1
+      Data: apple_1
     - Name: image
       Entry: 10
       Data: 1
@@ -110,13 +111,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 2
     - Name: id
       Entry: 1
-      Data: 2
+      Data: apple_2
     - Name: image
       Entry: 10
       Data: 2
@@ -131,13 +132,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 3
     - Name: id
       Entry: 1
-      Data: 3
+      Data: apple_3
     - Name: image
       Entry: 10
       Data: 3
@@ -152,13 +153,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 4
     - Name: id
       Entry: 1
-      Data: 4
+      Data: apple_4
     - Name: image
       Entry: 10
       Data: 4
@@ -194,22 +195,23 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: GridTypeData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridTypeData, Assembly-CSharp
     - Name: itemLevelData
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[ItemData, Assembly-CSharp]], mscorlib
+      Data: 3|System.Collections.Generic.List`1[[_Scripts.GridSystem.GridItemData,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 0
     - Name: id
       Entry: 1
-      Data: 5
+      Data: chicken_0
     - Name: image
       Entry: 10
       Data: 5
@@ -224,13 +226,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 1
     - Name: id
       Entry: 1
-      Data: 6
+      Data: chicken_1
     - Name: image
       Entry: 10
       Data: 6
@@ -245,13 +247,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 2
     - Name: id
       Entry: 1
-      Data: 7
+      Data: chicken_2
     - Name: image
       Entry: 10
       Data: 7
@@ -266,13 +268,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 3
     - Name: id
       Entry: 1
-      Data: 8
+      Data: chicken_3
     - Name: image
       Entry: 10
       Data: 8
@@ -287,13 +289,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: ItemData, Assembly-CSharp
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
     - Name: level
       Entry: 3
       Data: 4
     - Name: id
       Entry: 1
-      Data: 9
+      Data: chicken_4
     - Name: image
       Entry: 10
       Data: 9

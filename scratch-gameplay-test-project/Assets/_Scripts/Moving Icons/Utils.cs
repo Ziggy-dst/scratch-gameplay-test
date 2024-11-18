@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.GridSystem;
 using UnityEngine;
 
 public class Utils
@@ -26,7 +27,7 @@ public class Utils
         return default;
     }
 
-    public static int CalculateMultiProbability(List<ItemData> probabilityList)
+    public static int CalculateMultiProbability(List<GridItemData> probabilityList)
     {
         var sortedDistribution = probabilityList.OrderBy(x => x.probability);
 
