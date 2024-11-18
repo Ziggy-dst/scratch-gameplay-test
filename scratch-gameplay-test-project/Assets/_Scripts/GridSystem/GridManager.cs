@@ -50,7 +50,7 @@ namespace _Scripts.GridSystem
             _gridData = new GridData();
 
             _gridGenerator = new GridGenerator(rows, columns, generateStartPoint, gridItemSo, _gridData);
-            _clusterDetector = new ClusterDetector(rows, columns, _gridData);
+            _clusterDetector = new ClusterDetector(rows, columns, gridItemSo, _gridData);
             _gridGenerator.GenerateAllGrids();
             _gridItemMerger = new GridItemMerger(gridItemSo, _gridData);
         }
@@ -77,6 +77,8 @@ namespace _Scripts.GridSystem
             _cluster = _clusterDetector.CheckClusters(originItemGrid);
             
             if (_cluster is null) return;
+
+            print("cluster count: " + _cluster.Count);
             if (_cluster.Count < 2) return;
             // set bg color
             foreach (var i in _cluster)
@@ -99,7 +101,7 @@ namespace _Scripts.GridSystem
             var gridItemSpawnData = _gridItemMerger.CheckMerge(_cluster, mergeOrigin);
 
             var mergedGrids = gridItemSpawnData.mergedGrids;
-            
+
             if (_gridData.items[mergeOrigin.x, mergeOrigin.y].type == GridItemType.Apple)
                 AudioSource.PlayClipAtPoint(treeSound, Vector3.zero);
             else AudioSource.PlayClipAtPoint(chickSound, Vector3.zero);
