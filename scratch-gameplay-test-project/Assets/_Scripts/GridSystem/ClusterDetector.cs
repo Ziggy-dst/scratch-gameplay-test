@@ -5,6 +5,7 @@ namespace _Scripts.GridSystem
 {
     public class ClusterDetector
     {
+        private GridItemSO _gridItemSo;
         private GridData _gridData;
 
         private int _rows;
@@ -15,17 +16,18 @@ namespace _Scripts.GridSystem
 
         // private List<Vector2Int> scoredGrid = new List<Vector2Int>();
 
-        public ClusterDetector(int rows, int columns, GridData gridData)
+        public ClusterDetector(int rows, int columns, GridItemSO gridItemSo, GridData gridData)
         {
             _rows = rows;
             _columns = columns;
+            _gridItemSo = gridItemSo;
             _gridData = gridData;
         }
 
         public List<Vector2Int> CheckClusters(Vector2Int originItem)
         {
-            // TODO: change max level
-            if (_gridData.items[originItem.x, originItem.y].GridItemData.level == 4) return null;
+            var gridItem = _gridData.items[originItem.x, originItem.y];
+            if (gridItem.GridItemData.level == _gridItemSo.itemPool[gridItem.type].itemLevelData.Count) return null;
 
             visitedGrids = new bool[_rows, _columns];
 

@@ -32,6 +32,8 @@ namespace _Scripts.Merger
             int clusterCount = cluster.Count;
 
             int countAfterMerge = 0;
+
+            // TODO: count after merge bug: 6 =after merge=> 4
             //Get Current Cluster from somewhere
             switch (clusterCount)
             {
