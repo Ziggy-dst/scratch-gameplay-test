@@ -20,6 +20,7 @@ public class MergerUIManager : MonoBehaviour
 
     private void UpdateScore(int score)
     {
-        scoreText.DOText($"{score}", 0.25f, true, ScrambleMode.Numerals);
+        // scoreText.DOText($"{score}", 0.25f, true, ScrambleMode.Numerals);
+        DOVirtual.Int(int.Parse(scoreText.text), score, 0.25f, (x => scoreText.text = $"{x}")).Play();
     }
 }
