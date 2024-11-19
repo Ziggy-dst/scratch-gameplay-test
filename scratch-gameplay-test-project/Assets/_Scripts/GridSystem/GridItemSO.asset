@@ -28,6 +28,7 @@ MonoBehaviour:
     - {fileID: -193687487514039035, guid: 030b2d8660d4e4a43adb09e6223cbd79, type: 3}
     - {fileID: -2041788141536361018, guid: 13b78fa2159028f4ca58295aa159f125, type: 3}
     - {fileID: 4801429521721092798, guid: 9737c9f8b193a2046972136957f25697, type: 3}
+    - {fileID: 7482667652216324306, guid: 33cbcddbfa76a4d50bfcaf9b8f6efc97, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -52,7 +53,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -203,7 +204,7 @@ MonoBehaviour:
       Data: 
     - Name: typeProbability
       Entry: 4
-      Data: 0.5
+      Data: 0.49
     - Name: 
       Entry: 8
       Data: 
@@ -360,7 +361,59 @@ MonoBehaviour:
       Data: 
     - Name: typeProbability
       Entry: 4
-      Data: 0.5
+      Data: 0.49
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: _Scripts.GridSystem.GridTypeData, Assembly-CSharp
+    - Name: itemLevelData
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[_Scripts.GridSystem.GridItemData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: _Scripts.GridSystem.GridItemData, Assembly-CSharp
+    - Name: level
+      Entry: 3
+      Data: 0
+    - Name: id
+      Entry: 1
+      Data: arrow_up
+    - Name: image
+      Entry: 10
+      Data: 12
+    - Name: prize
+      Entry: 3
+      Data: 0
+    - Name: probability
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeProbability
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

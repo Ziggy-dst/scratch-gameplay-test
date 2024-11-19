@@ -24,7 +24,7 @@ namespace _Scripts.GridSystem
             _gridData = gridData;
         }
 
-        private void GenerateCover(int row, int column)
+        public void GenerateCover(int row, int column)
         {
             GameObject cover = new GameObject("cover_" + row + "_" + column)
             {
