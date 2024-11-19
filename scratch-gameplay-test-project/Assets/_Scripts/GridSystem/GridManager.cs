@@ -11,6 +11,7 @@ namespace _Scripts.GridSystem
         public static Action<Vector2Int> onMouseOverRevealedItem;
         public static Action onMouseExitRevealedItem;
         public static Action<Vector2Int> onMouseDownRevealedItem;
+        public static Action<int> onScoreCalculated;
 
         public GridItemSO gridItemSo;
         public GameObject clusterBGPrefab;
@@ -69,6 +70,8 @@ namespace _Scripts.GridSystem
         {
             if (isRevealed) _gridData.revealedGrids.Add(revealedGrid);
             else _gridData.revealedGrids.Remove(revealedGrid);
+            
+            CalculateScore();
         }
 
         private List<Vector2Int> _cluster = new List<Vector2Int>();
@@ -123,6 +126,8 @@ namespace _Scripts.GridSystem
                 _gridData.covers[i.x, i.y].Reset();
                 _gridData.revealedGrids.Remove(i);
             }
+            
+            CalculateScore();
         }
 
         private void DeleteGridItem(List<Vector2Int> deleteList)
@@ -131,6 +136,18 @@ namespace _Scripts.GridSystem
             {
                 Destroy(_gridData.items[d.x, d.y].gameObject);
             }
+        }
+        
+        private void CalculateScore()
+        {
+            int score = 0;
+
+            foreach (var r in _gridData.revealedGrids)
+            {
+                score += _gridData.items[r.x, r.y].GridItemData.prize;
+            }
+            
+            onScoreCalculated?.Invoke(score);
         }
     }
 }

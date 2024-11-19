@@ -84,7 +84,7 @@ MonoBehaviour:
       Data: 0
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: probability
       Entry: 4
       Data: 0.5
@@ -105,7 +105,7 @@ MonoBehaviour:
       Data: 1
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: probability
       Entry: 4
       Data: 0.3
@@ -126,7 +126,7 @@ MonoBehaviour:
       Data: 2
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 25
     - Name: probability
       Entry: 4
       Data: 0.15
@@ -147,7 +147,7 @@ MonoBehaviour:
       Data: 3
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 125
     - Name: probability
       Entry: 4
       Data: 0.05
@@ -168,7 +168,7 @@ MonoBehaviour:
       Data: 4
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 625
     - Name: probability
       Entry: 4
       Data: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
       Data: 5
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 3125
     - Name: probability
       Entry: 4
       Data: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
       Data: 6
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: probability
       Entry: 4
       Data: 0.5
@@ -262,7 +262,7 @@ MonoBehaviour:
       Data: 7
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: probability
       Entry: 4
       Data: 0.3
@@ -283,7 +283,7 @@ MonoBehaviour:
       Data: 8
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 25
     - Name: probability
       Entry: 4
       Data: 0.15
@@ -304,7 +304,7 @@ MonoBehaviour:
       Data: 9
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 125
     - Name: probability
       Entry: 4
       Data: 0.05
@@ -325,7 +325,7 @@ MonoBehaviour:
       Data: 10
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 625
     - Name: probability
       Entry: 4
       Data: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
       Data: 11
     - Name: prize
       Entry: 3
-      Data: 0
+      Data: 3125
     - Name: probability
       Entry: 4
       Data: 0
