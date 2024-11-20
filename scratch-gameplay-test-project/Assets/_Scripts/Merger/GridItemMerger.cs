@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.GridSystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Scripts.Merger
 {
@@ -24,6 +25,8 @@ namespace _Scripts.Merger
             _gridData = gridData;
         }
 
+        public static Action<int> onMergeResultGenerated;
+
         public LeveledUpGridItemSpawnData CheckMerge(List<Vector2Int> cluster, Vector2Int mergeOrigin)
         {
             //TODO: IconManager.OnMergeStateChanged?.Invoke(true);
@@ -33,39 +36,157 @@ namespace _Scripts.Merger
 
             int countAfterMerge = 0;
 
-            // TODO: count after merge bug: 6 =after merge=> 4
-            //Get Current Cluster from somewhere
-            switch (clusterCount)
-            {
-                case 2:
-                    //get merge result
-                    countAfterMerge = 1;
-                    //clear all items in cluster
-                    //pick random items to become result
-                    break;
-                case <= 4:
-                    countAfterMerge = 2;
-                    break;
-                case 5:
-                    countAfterMerge = 3;
-                    break;
-                case <= 7:
-                    countAfterMerge = 4;
-                    break;
-                case 8:
-                    countAfterMerge = 5;
-                    break;
-                case 9:
-                    countAfterMerge = 6;
-                    break;
-            }
+            int levelAfterMerge = 0;
 
+            float randomMergeSeed = Random.Range(0f, 1f);
+            
             GridItem currentGridItem = _gridData.items[cluster[0].x, cluster[0].y];
 
             int currentLevel = currentGridItem.GridItemData.level;
 
             GridItemType currentItemType = currentGridItem.type;
-            GridItemData leveledUpGridItemData = _gridItemSo.itemPool[currentItemType].itemLevelData[currentLevel+1];
+
+            // TODO: count after merge bug: 6 =after merge=> 4
+            //Get Current Cluster from somewhere
+            switch (clusterCount)
+            {
+                case 2:
+                    countAfterMerge = 1;
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.5f:
+                            levelAfterMerge = currentLevel;
+                            break;
+                        case <= 1:
+                            levelAfterMerge = currentLevel + 1;
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.25f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel;
+                            break;
+                        case <= 0.75f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 1;
+                            break;
+                        case <= 1f:
+                            countAfterMerge = 1;
+                            levelAfterMerge = currentLevel + 2;
+                            break;
+                    }
+                    break;
+                case 4:
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.25f:
+                            countAfterMerge = 3;
+                            levelAfterMerge = currentLevel;
+                            break;
+                        case <= 0.75f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 1;
+                            break;
+                        case <= 0.9f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 2;
+                            break;
+                        case <= 1f:
+                            countAfterMerge = 1;
+                            levelAfterMerge = currentLevel + 3;
+                            break;
+                    }
+                    break;
+                case 5:
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.2f:
+                            countAfterMerge = 4;
+                            levelAfterMerge = currentLevel;
+                            break;
+                        case <= 0.6f:
+                            countAfterMerge = 3;
+                            levelAfterMerge = currentLevel + 1;
+                            break;
+                        case <= 0.85f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 2;
+                            break;
+                        case <= 1f:
+                            countAfterMerge = 1;
+                            levelAfterMerge = currentLevel + 3;
+                            break;
+                    }
+                    break;
+                case 6:
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.5f:
+                            countAfterMerge = 4;
+                            levelAfterMerge = currentLevel + 1;
+                            break;
+                        case <= 0.8f:
+                            countAfterMerge = 3;
+                            levelAfterMerge = currentLevel + 2;
+                            break;
+                        case <= 0.95f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 3;
+                            break;
+                        case <= 1f:
+                            countAfterMerge = 1;
+                            levelAfterMerge = currentLevel + 4;
+                            break;
+                    }
+                    break;
+                case 7:
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.5f:
+                            countAfterMerge = 3;
+                            levelAfterMerge = currentLevel + 2;
+                            break;
+                        case <= 0.8f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 3;
+                            break;
+                        case <= 1f:
+                            countAfterMerge = 1;
+                            levelAfterMerge = currentLevel + 4;
+                            break;
+                    }
+                    break;
+                case 8:
+                    switch (randomMergeSeed)
+                    {
+                        case <= 0.5f:
+                            countAfterMerge = 4;
+                            levelAfterMerge = currentLevel + 2;
+                            break;
+                        case <= 0.8f:
+                            countAfterMerge = 3;
+                            levelAfterMerge = currentLevel + 3;
+                            break;
+                        case <= 1f:
+                            countAfterMerge = 2;
+                            levelAfterMerge = currentLevel + 4;
+                            break;
+                    }
+                    break;
+                case 9:
+                    countAfterMerge = 1;
+                    levelAfterMerge = currentLevel + 10;
+                    break;
+            }
+
+            levelAfterMerge = Mathf.Min(5, levelAfterMerge);
+            int levelGap = levelAfterMerge - currentLevel;
+            onMergeResultGenerated?.Invoke(levelGap);
+           
+            GridItemData leveledUpGridItemData = _gridItemSo.itemPool[currentItemType].itemLevelData[levelAfterMerge];
             var mergedGrids = GetMergeGrid(cluster, mergeOrigin, countAfterMerge);
 
             leveledUpGridItemSpawnData.itemType = currentItemType;

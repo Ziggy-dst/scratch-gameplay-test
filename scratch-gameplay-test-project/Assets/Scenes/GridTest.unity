@@ -748,6 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 53710191}
+  textFeedbackPrefab: {fileID: 277151855272090303, guid: 8c46b8a9352cccd42ba395c519682d44, type: 3}
 --- !u!1 &290468447
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,7 +87,7 @@ MonoBehaviour:
       Data: 1
     - Name: probability
       Entry: 4
-      Data: 0.5
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -108,7 +108,7 @@ MonoBehaviour:
       Data: 5
     - Name: probability
       Entry: 4
-      Data: 0.3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -129,7 +129,7 @@ MonoBehaviour:
       Data: 25
     - Name: probability
       Entry: 4
-      Data: 0.15
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -150,7 +150,7 @@ MonoBehaviour:
       Data: 125
     - Name: probability
       Entry: 4
-      Data: 0.05
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -204,7 +204,7 @@ MonoBehaviour:
       Data: 
     - Name: typeProbability
       Entry: 4
-      Data: 0.49
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -244,7 +244,7 @@ MonoBehaviour:
       Data: 1
     - Name: probability
       Entry: 4
-      Data: 0.5
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -265,7 +265,7 @@ MonoBehaviour:
       Data: 5
     - Name: probability
       Entry: 4
-      Data: 0.3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -286,7 +286,7 @@ MonoBehaviour:
       Data: 25
     - Name: probability
       Entry: 4
-      Data: 0.15
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -307,7 +307,7 @@ MonoBehaviour:
       Data: 125
     - Name: probability
       Entry: 4
-      Data: 0.05
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -361,7 +361,7 @@ MonoBehaviour:
       Data: 
     - Name: typeProbability
       Entry: 4
-      Data: 0.49
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
